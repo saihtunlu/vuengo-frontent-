@@ -1,0 +1,282 @@
+:root {
+  --vs-warn: 255, 186, 0 !important;
+  --vs-danger: 255, 71, 87 !important;
+  --vs-success: 70, 201, 58 !important;
+  --vs-dark: 18, 18, 18 !important;
+  --vs-gradient-dark: 18, 18, 18 !important;
+  --vs-light: 255, 255, 255 !important;
+  --vs-color: 17, 18, 20 !important;
+  --vs-facebook: 59, 89, 153 !important;
+  --vs-twitter: 29, 161, 242 !important;
+  --vs-youtube: 255, 0, 0 !important;
+  --vs-pinterest: 189, 8, 28 !important;
+  --vs-linkedin: 0, 119, 181 !important;
+  --vs-snapchat: 255, 252, 0 !important;
+  --vs-whatsapp: 37, 211, 102 !important;
+  --vs-tumblr: 54, 70, 93 !important;
+  --vs-reddit: 255, 69, 0 !important;
+  --vs-spotify: 30, 215, 96 !important;
+  --vs-amazon: 255, 153, 0 !important;
+  --vs-medium: 2, 184, 117 !important;
+  --vs-vimeo: 26, 183, 234 !important;
+  --vs-skype: 0, 175, 240 !important;
+  --vs-dribbble: 234, 76, 137 !important;
+  --vs-slack: 74, 21, 75 !important;
+  --vs-yahoo: 67, 2, 151 !important;
+  --vs-twitch: 100, 65, 164 !important;
+  --vs-discord: 114, 137, 218 !important;
+  --vs-telegram: 0, 136, 204 !important;
+  --vs-google-plus: 219, 68, 55 !important;
+  --vs-messenger: 0, 132, 255 !important;
+
+  --vs-theme: 25, 25, 25 !important;
+  --vs-divider: 65, 65, 65 !important;
+  --vs-background: 45, 45, 45 !important;
+  --vs-text: 255, 255, 255 !important;
+  --vs-gray-1: 30, 30, 30 !important;
+  --vs-gray-2: 20, 20, 23 !important;
+  --vs-gray-3: 15, 16, 19 !important;
+  --vs-gray-4: 10, 11, 14 !important;
+  --vs-gray: 10, 11, 14 !important;
+  --vs-light: 30, 30, 30 !important;
+  --vs-shadow-opacity: 0.3 !important;
+  --vs-dark: 240, 240, 240 !important;
+  --vs-background-opacity: 0.6 !important;
+}
+.divider {
+  width: 100%;
+  margin: 10px 0px;
+  height: 1px;
+  background: rgb(var(--vs-divider)) !important;
+}
+.bg-gray {
+  background: rgb(var(--vs-gray)) !important;
+}
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+.bx {
+  font-size: 20px;
+}
+* {
+  font-family: "Raleway", sans-serif;
+}
+div#app {
+  background: rgba(var(--vs-theme)) !important;
+  min-height: 100vh;
+}
+.inner-shadow {
+  box-shadow: var(--inner-shadow) !important;
+}
+.shadow {
+  box-shadow: var(--shadow) !important;
+}
+.primaryHover:hover {
+  box-shadow: 0px 4px 25px -8px rgba(var(--vs-primary), 0.2);
+}
+.primary {
+  color: rgb(var(--vs-primary)) !important;
+}
+.primary-bg {
+  background: rgb(var(--vs-primary)) !important;
+}
+.dark {
+  color: rgb(var(--vs-dark)) !important;
+}
+.dark-bg {
+  background: rgb(var(--vs-dark)) !important;
+}
+.warning {
+  color: rgb(var(--vs-warning)) !important;
+}
+.success {
+  color: rgb(var(--vs-success)) !important;
+}
+.danger {
+  color: rgb(var(--vs-danger)) !important;
+}
+.gray {
+  color: rgb(var(--vs-dark), 0.5) !important;
+}
+.programmingBox {
+  cursor: pointer;
+}
+.open-icon {
+  animation: openicon 0.25s !important;
+}
+.transparent_text {
+  background: linear-gradient(
+    118deg,
+    rgba(var(--vs-primary), 1),
+    rgb(var(--vs-gradient-dark))
+  );
+  text-shadow: 0 10px 20px rgba(var(--vs-primary), 0.2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-font-smoothing: auto;
+}
+.shadowBtn {
+  padding: 10px;
+  background: transparent !important;
+  box-shadow: var(--shadow);
+  border-radius: 15px !important;
+  border: none !important;
+  min-width: 120px;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgb(var(--vs-dark)) !important;
+}
+.shadowBtn:active {
+  box-shadow: var(--inner-shadow);
+}
+.vs-input {
+  width: 100% !important;
+  height: 42px !important;
+  border-radius: 15px !important;
+}
+span.vs-input__icon {
+  margin-left: 3px;
+}
+button.vs-button {
+  height: 40px !important;
+  border-radius: 15px !important;
+  right: 5px !important;
+}
+/* ------------------------------------------------'mobile'------------------------------------------------ */
+@media screen and (max-width: 600px) {
+  .big-radius {
+    border-radius: 25px;
+  }
+  .medium-radius {
+    border-radius: 15px;
+  }
+  .small-radius {
+    border-radius: 10px;
+  }
+
+  .header {
+    font-size: 16px !important;
+  }
+  .caption {
+    font-size: 1.5rem !important;
+  }
+  html {
+    font-size: 12px;
+  }
+  input.vs-input,
+  .vs-con-table td,
+  textarea,
+  .normal-text,
+  .con-content--item,
+  .shadowBtn {
+    font-size: 12px !important;
+  }
+
+  .sm-text,
+  .con-vs-chip {
+    font-size: 10px !important;
+  }
+  .base-padding {
+    padding: 0px 15px !important;
+  }
+  .mt-base {
+    margin-top: 20px !important;
+  }
+  .mt-medium {
+    margin-top: 15px !important;
+  }
+}
+
+/* ------------------------------------------------'tablet'------------------------------------------------ */
+@media screen and (min-width: 600px) and (max-width: 992px) {
+  .big-radius {
+    border-radius: 15px;
+  }
+  .medium-radius {
+    border-radius: 15px;
+  }
+  .small-radius {
+    border-radius: 10px;
+  }
+  .svgImage {
+    width: 40% !important;
+  }
+
+  .header {
+    font-size: 2.2rem !important;
+  }
+  .caption {
+    font-size: 1.8rem !important;
+  }
+  html {
+    font-size: 14px;
+  }
+  .sm-text,
+  .con-vs-chip {
+    font-size: 12px !important;
+  }
+  input.vs-input,
+  .vs-con-table td,
+  textarea,
+  .normal-text,
+  .con-content--item,
+  .shadowBtn {
+    font-size: 14px !important;
+  }
+  .base-padding {
+    padding: 0px 15px !important;
+  }
+  .mt-base {
+    margin-top: 50px !important;
+  }
+  .mt-medium {
+    margin-top: 20px !important;
+  }
+}
+
+/* ------------------------------------------------"desktop"------------------------------------------------ */
+@media (min-width: 992px) {
+  .big-radius {
+    border-radius: 20px;
+  }
+  .medium-radius {
+    border-radius: 15px;
+  }
+  .small-radius {
+    border-radius: 10px;
+  }
+  .svgImage {
+    width: 30% !important;
+  }
+
+  input.vs-input,
+  .vs-con-table td,
+  textarea,
+  .normal-text,
+  .con-content--item,
+  .shadowBtn {
+    font-size: 16px !important;
+  }
+  .header {
+    font-size: 2.5rem !important;
+  }
+  .caption {
+    font-size: 1.5rem !important;
+  }
+  html {
+    font-size: 16px;
+  }
+  .sm-text,
+  .con-vs-chip {
+    font-size: 10px !important;
+  }
+  .base-padding {
+    padding: 0px 30px !important;
+  }
+  .mt-base {
+    margin-top: 100px !important;
+  }
+  .mt-medium {
+    margin-top: 30px !important;
+  }
+}
