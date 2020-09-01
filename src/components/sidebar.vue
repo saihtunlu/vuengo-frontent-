@@ -38,7 +38,12 @@ var tabs = [
     icon: "bx-grid-alt",
     id: 1,
   },
-
+  {
+    name: "Chats",
+    to: "Chats",
+    icon: "bx-message",
+    id: 10,
+  },
   {
     name: "Setting",
     to: "Setting",

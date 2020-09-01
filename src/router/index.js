@@ -10,6 +10,8 @@ import Forgot from '../screens/forgot.vue'
 import Reset from '../screens/reset-password.vue'
 import Post from '../screens/post.vue'
 import Setting from '../screens/setting.vue'
+import Chat from '../screens/chat.vue'
+import Chats from '../screens/chats.vue'
 
 
 const routes = [
@@ -60,6 +62,18 @@ const routes = [
         name: "Post",
         component: Post,
         meta: { index: 9 }
+    },
+    {
+        path: "/chat/:uri?",
+        name: "Chat",
+        component: Chat,
+        meta: { index: 10 }
+    },
+    {
+        path: "/chats",
+        name: "Chats",
+        component: Chats,
+        meta: { index: 10 }
     },
 ];
 
