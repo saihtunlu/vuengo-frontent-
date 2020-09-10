@@ -4,11 +4,7 @@
       <div
         v-for="tab in tabs"
         :key="tab.name"
-        @click="
-          $router.push({
-            name: tab.to,
-          })
-        "
+        @click="$router.push({name: tab.to,})"
         class="flex-x-between sidebar-item pointer w-100 flex-align-center"
       >
         <p class="flex-align-center">
@@ -42,7 +38,13 @@ var tabs = [
     name: "Chats",
     to: "Chats",
     icon: "bx-message",
-    id: 10,
+    id: 12,
+  },
+  {
+    name: "Contents",
+    to: "Contents",
+    icon: "bx-user",
+    id: 11,
   },
   {
     name: "Setting",

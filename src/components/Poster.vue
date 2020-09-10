@@ -2,7 +2,7 @@
   <div>
     <div class="poster big-radius">
       <div class="flex-between-center flex-align-center">
-        <vs-avatar history history-gradient circle class="mr-3" size="50">
+        <vs-avatar circle class="mr-3" size="50">
           <img :src="`http://localhost:8000${user.detail.avatar}`" v-if="user.detail" alt />
           <img src="https://vuesax.com/avatars/avatar-3.png" v-else alt />
         </vs-avatar>

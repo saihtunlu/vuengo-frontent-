@@ -35,7 +35,7 @@ body::-webkit-scrollbar {
   display: none !important;
 }
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
   height: 1px;
   /* display: none !important; */
 }

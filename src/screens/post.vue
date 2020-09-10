@@ -14,7 +14,7 @@
         </div>
 
         <div class="flex-between-center mb-3 flex-align-center">
-          <vs-avatar history history-gradient circle class="mr-3" size="50">
+          <vs-avatar class="mr-3" size="50">
             <img :src="`http://localhost:8000${user.detail.avatar}`" v-if="user.detail" alt />
             <img src="https://vuesax.com/avatars/avatar-3.png" v-else alt />
           </vs-avatar>
@@ -38,13 +38,13 @@
               <img :src="url" class="w-100 small-radius" alt />
             </div>
           </div>
-          <vs-button @click="addComment" v-if="!reply">
+          <vs-button @click="addComment" transparent warn v-if="!reply">
             Send
-            <i class="bx bx-chevron-right ml-2"></i>
+            <i class="bx bx-send ml-2"></i>
           </vs-button>
-          <vs-button @click="addCommentReplies" v-else>
+          <vs-button @click="addCommentReplies" transparent warn v-else>
             Send
-            <i class="bx bx-chevron-right ml-2"></i>
+            <i class="bx bx-send ml-2"></i>
           </vs-button>
         </div>
 
@@ -52,7 +52,7 @@
           <div class="divider"></div>
           <div class="flex-x-between">
             <div class="flex-align-center mb-3" v-if="comment">
-              <vs-avatar circle class="mr-2 pointer">
+              <vs-avatar class="mr-2 pointer">
                 <img
                   :src="`http://localhost:8000${comment.user.detail.avatar}`"
                   v-if="comment.user.detail"
