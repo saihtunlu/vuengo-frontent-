@@ -3,20 +3,36 @@
     <div class="poster big-radius">
       <div class="flex-between-center flex-align-center">
         <vs-avatar circle class="mr-3" size="50">
-          <img :src="`http://localhost:8000${user.detail.avatar}`" v-if="user.detail" alt />
+          <img
+            :src="`http://localhost:8000${user.detail.avatar}`"
+            v-if="user.detail"
+            alt
+          />
           <img src="https://vuesax.com/avatars/avatar-3.png" v-else alt />
         </vs-avatar>
-        <vs-button @click="showAddPost=true" style="width:90%" flat>What's on your mind?</vs-button>
+        <vs-button @click="showAddPost = true" style="width: 90%" flat
+          >What's on your mind?</vs-button
+        >
       </div>
     </div>
-    <vs-dialog blur overflow-hidden not-close class="addpost" v-model="showAddPost">
+    <vs-dialog
+      blur
+      overflow-hidden
+      not-close
+      class="addpost"
+      v-model="showAddPost"
+    >
       <div class="con-content">
         <div class="flex-align-center mb-3">
           <vs-avatar circle class="mr-2 pointer">
-            <img :src="`http://localhost:8000${user.detail.avatar}`" v-if="user.detail" alt />
+            <img
+              :src="`http://localhost:8000${user.detail.avatar}`"
+              v-if="user.detail"
+              alt
+            />
             <img src="https://vuesax.com/avatars/avatar-3.png" v-else alt />
           </vs-avatar>
-          <p>{{user.first_name}} {{user.last_name}}</p>
+          <p>{{ user.first_name }} {{ user.last_name }}</p>
         </div>
         <textarea
           name
@@ -90,7 +106,7 @@ export default {
         formData.append("image", this.image);
       }
       this.$axios
-        .post("create-post/", formData, config)
+        .post("post/", formData, config)
         .then((response) => {
           this.showAddPost = false;
           this.$store.dispatch("addPost", { post: response.data });

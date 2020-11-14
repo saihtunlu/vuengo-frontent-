@@ -6,13 +6,11 @@
       </vs-button>
       <vs-avatar class="mr-3" badge badge-color="success" v-if="!isStarted">
         <img
-          :src="
-            `http://localhost:8000${
-              data.invited_user.id === user.id
-                ? data.creator.detail.avatar
-                : data.invited_user.detail.avatar
-            }`
-          "
+          :src="`http://localhost:8000${
+            data.invited_user.id === user.id
+              ? data.creator.detail.avatar
+              : data.invited_user.detail.avatar
+          }`"
           v-if="
             data.invited_user.id === user.id
               ? data.creator.detail
@@ -34,13 +32,11 @@
       <div v-if="isStarted" class="flex-center py-5 flex-column">
         <vs-avatar size="120">
           <img
-            :src="
-              `http://localhost:8000${
-                data.invited_user.id === user.id
-                  ? data.creator.detail.avatar
-                  : data.invited_user.detail.avatar
-              }`
-            "
+            :src="`http://localhost:8000${
+              data.invited_user.id === user.id
+                ? data.creator.detail.avatar
+                : data.invited_user.detail.avatar
+            }`"
             v-if="
               data.invited_user.id === user.id
                 ? data.creator.detail
@@ -74,8 +70,8 @@
           :class="message.user.id === user.id ? 'sent' : 'received'"
         >
           <vs-avatar
-            class="mr-3 "
-            style="min-width:44px !important;"
+            class="mr-3"
+            style="min-width: 44px !important"
             badge
             badge-color="success"
             v-if="message.user.id !== user.id"
@@ -113,24 +109,22 @@
                 class="bx bxs-check-circle status"
                 v-if="
                   message.received &&
-                    !message.seen &&
-                    message.user.id == user.id
+                  !message.seen &&
+                  message.user.id == user.id
                 "
               ></i>
               <vs-avatar
                 class="seen-badge"
                 circle
                 size="12"
-                v-if="message.id === messages[ReadIndex].id"
+                v-if="ReadIndex && message.id === messages[ReadIndex].id"
               >
                 <img
-                  :src="
-                    `http://localhost:8000${
-                      data.invited_user.id === user.id
-                        ? data.creator.detail.avatar
-                        : data.invited_user.detail.avatar
-                    }`
-                  "
+                  :src="`http://localhost:8000${
+                    data.invited_user.id === user.id
+                      ? data.creator.detail.avatar
+                      : data.invited_user.detail.avatar
+                  }`"
                 />
               </vs-avatar>
             </div>
@@ -138,14 +132,18 @@
             <div
               class="flex-align-center my-2"
               v-if="message.image"
-              :class="message.id === messages[ReadIndex].id ? 'Seen-Line' : ''"
+              :class="
+                ReadIndex && message.id === messages[ReadIndex].id
+                  ? 'Seen-Line'
+                  : ''
+              "
             >
               <i
                 class="bx bx-loader-alt bx-spin mr-2"
                 v-if="message.user.id === user.id && message.sending"
               ></i>
               <img
-                style="width:120px "
+                style="width: 120px"
                 @click="
                   () => {
                     showImage = true;
@@ -174,24 +172,22 @@
                 class="bx bxs-check-circle status"
                 v-if="
                   message.received &&
-                    !message.seen &&
-                    message.user.id == user.id
+                  !message.seen &&
+                  message.user.id == user.id
                 "
               ></i>
               <vs-avatar
                 class="seen-badge"
                 circle
                 size="12"
-                v-if="message.id === messages[ReadIndex].id"
+                v-if="ReadIndex && message.id === messages[ReadIndex].id"
               >
                 <img
-                  :src="
-                    `http://localhost:8000${
-                      data.invited_user.id === user.id
-                        ? data.creator.detail.avatar
-                        : data.invited_user.detail.avatar
-                    }`
-                  "
+                  :src="`http://localhost:8000${
+                    data.invited_user.id === user.id
+                      ? data.creator.detail.avatar
+                      : data.invited_user.detail.avatar
+                  }`"
                 />
               </vs-avatar>
             </div>
@@ -213,8 +209,8 @@
         <i class="bx bx-plus" v-if="!showExtra"></i>
         <i class="bx bx-x" v-if="showExtra"></i>
       </vs-button>
-      <vs-button transparent>
-        <i class="bx bx-smile"></i>
+      <vs-button @click="showImage = true" transparent>
+        <i class="bx bx-video"></i>
       </vs-button>
       <vs-avatar v-if="image" badge-position="top-right" class="mr-2 chatImage">
         <img
@@ -229,12 +225,12 @@
           alt
         />
         <template #badge>
-          <i class="bx bx-x" @click="clearFile" style="font-size:14px"></i>
+          <i class="bx bx-x" @click="clearFile" style="font-size: 14px"></i>
         </template>
       </vs-avatar>
       <vs-input
         class="mr-2"
-        style="width:75%;transistion:0.3s all;"
+        style="width: 75%; transistion: 0.3s all"
         :style="image ? `width:60% !important;` : ''"
         @keydown.enter="postMessage"
         v-model="text"
@@ -247,13 +243,17 @@
 
     <vs-dialog not-close blur auto-width not-padding v-model="showImage">
       <div class="con-image">
-        <img :src="popUpImage" width="100%" class="small-radius" alt />
+        <!-- <img :src="popUpImage" width="100%" class="small-radius" alt /> -->
+        <VideoChat :user="user" :chat_to="chat_to" :uri="data.uri" />
       </div>
     </vs-dialog>
   </div>
 </template>
 
 <script>
+import VideoChat from "../components/VideoChat";
+// import Peer from "peerjs";
+
 export default {
   data() {
     return {
@@ -275,11 +275,15 @@ export default {
       return this.$store.state.user;
     },
   },
+  components: {
+    VideoChat,
+  },
   created() {
     this.$store.commit("setActiveIndex", this.$route.meta.index);
     this.getChatDetails();
     this.getMessage();
     this.initPusher();
+    // this.initPeer();
   },
   mounted() {},
   watch: {
@@ -292,6 +296,15 @@ export default {
     },
   },
   methods: {
+    // initPeer() {
+    //   const myPeer = new Peer(undefined, {
+    //     host: "/",
+    //     port: "3001",
+    //   });
+    //   myPeer.on("open", (id) => {
+    //     console.log("initPeer -> id", id);
+    //   });
+    // },
     initPusher() {
       var Chat = this.$pusher.subscribe(`chat${this.user.id}`);
       Chat.bind(`newMessage${this.user.id}`, (response) => {
@@ -323,6 +336,7 @@ export default {
       this.$axios
         .get(`http://localhost:8000/chats/${this.$route.params.uri}`)
         .then((response) => {
+          console.log("getChatDetails -> response", response);
           this.data = response.data;
           this.chat_to =
             this.user.id === response.data.creator.id
@@ -416,7 +430,7 @@ export default {
         });
     },
     filterRead(messages) {
-      var filter = messages.filter(function(data) {
+      var filter = messages.filter(function (data) {
         return data.seen === true;
       });
 

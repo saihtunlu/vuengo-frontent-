@@ -5,20 +5,22 @@
         <div class="flex-align-center">
           <vs-avatar class="mr-2 pointer">
             <img
-              :src="`http://localhost:8000${post.user.detail.avatar}`"
+              :src="`${post.user.detail.avatar}`"
               v-if="post.user.detail"
               alt
             />
             <img src="https://vuesax.com/avatars/avatar-3.png" v-else alt />
           </vs-avatar>
           <div>
-            <p class="mb-0">{{post.user.first_name}} {{post.user.last_name}}</p>
+            <p class="mb-0">
+              {{ post.user.first_name }} {{ post.user.last_name }}
+            </p>
             <span class="sm-text">
-              Posted on {{
-              $moment(
-              post.created_at,
-              "YYYY-MM-DDTHH:mm:ss.SSS"
-              ).format("DD-MM-YYYY HH:mm")
+              Posted on
+              {{
+                $moment(post.created_at, "YYYY-MM-DDTHH:mm:ss.SSS").format(
+                  "DD-MM-YYYY HH:mm"
+                )
               }}
             </span>
           </div>
@@ -31,13 +33,17 @@
             <vs-button class="w-100" transparent>
               <i class="bx bx-share-alt mr-2"></i> Share
             </vs-button>
-            <vs-button class="w-100" transparent v-if="$store.getters.isOwner(post.user.id)">
+            <vs-button
+              class="w-100"
+              transparent
+              v-if="$store.getters.isOwner(post.user.id)"
+            >
               <i class="bx bx-edit-alt mr-2"></i> Edit
             </vs-button>
             <vs-button
               class="w-100"
               transparent
-              @click="$store.dispatch('removePost',{post_id:post.id})"
+              @click="$store.dispatch('removePost', { post_id: post.id })"
               v-if="$store.getters.isOwner(post.user.id)"
             >
               <i class="bx bx-trash mr-2"></i> Delete
@@ -45,10 +51,10 @@
           </div>
         </div>
       </div>
-      <p class="mb-3">{{post.content}}</p>
+      <p class="mb-3">{{ post.content }}</p>
       <img
-        @click="viewImage(`http://localhost:8000${post.image}`)"
-        :src="`http://localhost:8000${post.image}`"
+        @click="viewImage(`${post.image}`)"
+        :src="`${post.image}`"
         width="100%"
         class="small-radius mb-3 pointer"
         alt
@@ -59,31 +65,34 @@
             danger
             transparent
             class="mr-3"
-            @click="$store.dispatch('unlikePost',{post_id:post.id})"
+            @click="$store.dispatch('unlikePost', { post_id: post.id })"
             v-if="$store.getters.isLiked(post.id)"
           >
             <i class="bx bxs-heart mr-2"></i>
-            {{post.likes.length}}
+            {{ post.likes.length }}
           </vs-button>
           <vs-button
             dark
             transparent
             v-else
             class="mr-3"
-            @click="$store.dispatch('likePost',{post_id:post.id})"
+            @click="$store.dispatch('likePost', { post_id: post.id })"
           >
             <i class="bx bx-heart mr-2"></i>
-            {{post.likes.length}}
+            {{ post.likes.length }}
           </vs-button>
-          <vs-button @click="$router.push({name: 'Post',query:{pid:post.id}})" transparent>
+          <vs-button
+            @click="$router.push({ name: 'Post', query: { pid: post.id } })"
+            transparent
+          >
             <i class="bx bx-message-square-detail mr-2"></i>
-            {{post.comments.length}}
+            {{ post.comments.length }}
           </vs-button>
         </div>
         <vs-avatar-group max="4">
           <vs-avatar v-for="like in post.likes" size="30" :key="like.id">
             <img
-              :src="`http://localhost:8000${like.user.detail.avatar}`"
+              :src="`${like.user.detail.avatar}`"
               v-if="like.user.detail"
               alt
             />

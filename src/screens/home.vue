@@ -3,7 +3,11 @@
     <div class="col-12">
       <Poster />
     </div>
-    <div class="flex-center col-12 mt-medium" v-for="post in posts" :key="post.title">
+    <div
+      class="flex-center col-12 mt-medium"
+      v-for="post in posts"
+      :key="post.id"
+    >
       <Card :post="post" />
     </div>
   </div>

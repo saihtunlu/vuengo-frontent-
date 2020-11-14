@@ -28,7 +28,7 @@ export default {
   },
   getPosts: async ({ commit }) => {
     return await axios.get("/posts/").then((response) => {
-      commit("setPosts", response.data);
+      commit("setPosts", response.data.results);
     });
   },
 
